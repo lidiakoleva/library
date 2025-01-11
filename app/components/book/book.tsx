@@ -1,6 +1,8 @@
 import Image from "next/image";
 
-const Book = () => {
+const Book = ({ data }: any) => {
+  const { title, authors } = data;
+
   return (
     <article className="bg-white border shadow-xl rounded-lg overflow-hidden">
       {/* <Image
@@ -11,12 +13,16 @@ const Book = () => {
         className="w-100 object-cover"
       /> */}
       <div className="p-4 space-y-3">
-        <p className="text-lg font-bold">Title of this card</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-          rutrum leo et pellentesque blandit. Praesent mattis non velit id
-          pharetra. Maecenas ut nulla id turpis mollis elementum in sit amet
-          nibh.
+        <p className="text-lg font-bold">{title}</p>
+        <p className="text-sm">
+          {authors.map(({ name, key }: any) => (
+            <span
+              className="after:content-[','] last:after:content-[''] mr-1"
+              key={key}
+            >
+              {name}
+            </span>
+          ))}
         </p>
       </div>
     </article>

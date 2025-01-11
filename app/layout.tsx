@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navigation from "./components/navigration/navigation";
+import StoreProvider from "./StoreProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +31,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-200 pt-44 min-h-full`}
       >
         <Navigation />
-        <section className="container mx-auto">{children}</section>
+        <section className="container mx-auto">
+          <StoreProvider>{children}</StoreProvider>
+        </section>
       </body>
     </html>
   );
