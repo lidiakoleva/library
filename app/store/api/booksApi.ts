@@ -8,12 +8,8 @@ export const bookApi = createApi({
   endpoints: (builder) => ({
     getAllBooks: builder.query<any, string>({
       query: (page?: string | number) =>
-        `/subjects/fiction.json?page=${page ?? 0}`,
+        `/subjects/fantasy.json?page=${page ?? 0}`,
     }),
-    // getBookCover: builder.query<any, string>({
-    //   query: (coverId: number) =>
-    //     `/subjects/fiction.json?page=${page ?? 0}`,
-    // }),
   }),
 });
 

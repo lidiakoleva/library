@@ -7,8 +7,11 @@ export default function Book() {
   const { data, error, isLoading } = useGetAllBooksQuery("0");
 
   return (
-    <section className="columns-1 sm:columns-2 gap-4 mx-auto space-y-6">
-      <BookListing data={data && data.works} isLoading={isLoading} />
-    </section>
+    <>
+      <h1>My fantasy books listing</h1>
+      <section className="grid grid-cols-[repeat(auto-fit,200px)] gap-6 justify-center content-stretch mx-auto">
+        <BookListing data={data && data.works} isLoading={isLoading} />
+      </section>
+    </>
   );
 }
