@@ -1,13 +1,11 @@
 import Book from "./book";
 
-const BookListing = (props: any) => {
-  const { data, isLoading } = props;
-
+const BookListing = ({ data }: { data: Book[] }) => {
   return (
     <>
-      {!isLoading &&
-        data &&
-        data.map((book: any) => <Book key={book.key} data={book} />)}
+      {data.map((book: Book) => (
+        <Book key={book.key} data={book} />
+      ))}
     </>
   );
 };

@@ -2,9 +2,9 @@ import Image from "next/image";
 
 const Navigation = () => {
   return (
-    <section className="fixed inset-x-0 top-0 bg-white p-2 shadow-lg">
+    <section className="fixed inset-x-0 top-0 bg-white p-6 shadow-lg z-50">
       <Image
-        src="https://gpsites.co/dc/wp-content/uploads/sites/69/2020/09/logo-6.svg"
+        src="/logo.png"
         alt=""
         width="400"
         height="20"
