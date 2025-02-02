@@ -7,14 +7,15 @@ type BookProps = {
 };
 
 const Book = ({ data }: BookProps) => {
-  const { title, authors, cover_id } = data;
+  const { title, authors, cover_id, key } = data;
   const coverUrl = cover_id
     ? `https://covers.openlibrary.org/b/id/${cover_id}-M.jpg`
     : "";
+  const linkUrl = key.split("/").pop();
 
   return (
     <article className="bg-white border shadow-md rounded-lg overflow-hidden cursor-pointer transition-all hover:shadow-lg hover:shadow-slate-500">
-      <Link href={`/book/${cover_id}`}>
+      <Link href={`/books/${linkUrl}`}>
         {coverUrl && (
           <div className="flex justify-center">
             <Image

@@ -7,7 +7,7 @@ export type Book = {
   key: string;
   title: string;
   authors: Author[];
-  cover_id: number;
+  cover_id?: number;
 };
 
 export type BookQuery = {};

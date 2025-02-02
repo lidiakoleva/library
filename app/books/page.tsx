@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useGetAllBooksQuery } from "../store/api/booksApi";
 import BookListing from "../components/book/bookListing";
 
-export default function Book() {
+export default function BookListingPage() {
   const { data, error, isLoading } = useGetAllBooksQuery("0");
 
   return (
@@ -27,7 +27,7 @@ export default function Book() {
         </div>
       </section>
       <section className="container grid grid-cols-[repeat(auto-fit,200px)] gap-6 justify-center content-stretch mx-auto">
-        {!isLoading && data && <BookListing data={data} />}
+        {data && <BookListing data={data} />}
       </section>
     </>
   );

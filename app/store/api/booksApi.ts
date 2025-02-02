@@ -6,10 +6,17 @@ export const bookApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "https://openlibrary.org/" }),
   endpoints: (builder) => ({
     getAllBooks: builder.query<Book[], string>({
-      query: (page?: string) => `/subjects/fantasy.json?page=${page ?? 0}`,
+      query: (page = "0") => `/subjects/fantasy.json?page=${page}`,
       transformResponse: (response: { works: Book[] }) => response.works,
+    }),
+    getBookInfo: builder.query<Book, string>({
+      query: (id) => `/works/${id}.json`,
     }),
   }),
 });
 
-export const { middleware: bookApiMiddleware, useGetAllBooksQuery } = bookApi;
+export const {
+  middleware: bookApiMiddleware,
+  useGetAllBooksQuery,
+  useGetBookInfoQuery,
+} = bookApi;
