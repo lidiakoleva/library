@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { Book } from "@types";
+import type { Book, BookRating } from "@types";
 
 export const bookApi = createApi({
   reducerPath: "bookApi",
@@ -12,6 +12,9 @@ export const bookApi = createApi({
     getBookInfo: builder.query<Book, string>({
       query: (id) => `/works/${id}.json`,
     }),
+    getBookRaiting: builder.query<BookRating, string>({
+      query: (id) => `/works/${id}/ratings.json`,
+    }),
   }),
 });
 
@@ -19,4 +22,5 @@ export const {
   middleware: bookApiMiddleware,
   useGetAllBooksQuery,
   useGetBookInfoQuery,
+  useGetBookRaitingQuery,
 } = bookApi;

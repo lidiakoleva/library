@@ -1,6 +1,9 @@
+import { useEffect, useState } from "react";
+import { useGetBookRaitingQuery } from "@/app/store/api/booksApi";
+import type { Book } from "@types";
 import Link from "next/link";
 import Image from "next/image";
-import type { Book } from "@types";
+import BookRating from "./rating";
 
 type BookProps = {
   data: Book;
@@ -11,19 +14,19 @@ const Book = ({ data }: BookProps) => {
   const coverUrl = cover_id
     ? `https://covers.openlibrary.org/b/id/${cover_id}-M.jpg`
     : "";
-  const linkUrl = key.split("/").pop();
+  const bookId = key.split("/").pop();
 
   return (
-    <article className="bg-white border shadow-md rounded-lg overflow-hidden cursor-pointer transition-all hover:shadow-lg hover:shadow-slate-500">
-      <Link href={`/books/${linkUrl}`}>
+    <article className="bg-white rounded-lg overflow-hidden cursor-pointer transition-all hover:shadow-lg hover:shadow-slate-300">
+      <Link href={`/books/${bookId}`}>
         {coverUrl && (
           <div className="flex justify-center">
             <Image
               src={coverUrl}
               alt="book_cover"
               width={208}
-              height={256}
-              className="h-72 object-cover"
+              height={224}
+              className="h-56 object-contain"
             />
           </div>
         )}
@@ -39,6 +42,7 @@ const Book = ({ data }: BookProps) => {
               </span>
             ))}
           </p>
+          <BookRating bookId={bookId ?? ""} />
         </div>
       </Link>
     </article>
