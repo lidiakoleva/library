@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navigation from "./components/navigration/navigation";
-import StoreProvider from "./StoreProvider";
+import StoreProvider from "./providers/StoreProvider";
+import { ThemeProvider } from "./providers/ThemeProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,11 +28,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          src="https://kit.fontawesome.com/db4203a0f4.js"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased pt-44 pb-16 min-h-full`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased pt-44 pb-16 min-h-full bg-white dark:bg-slate-700`}
       >
-        <Navigation />
-        <StoreProvider>{children}</StoreProvider>
+        <ThemeProvider>
+          <Navigation />
+          <StoreProvider>{children}</StoreProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

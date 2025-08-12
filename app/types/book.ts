@@ -8,7 +8,8 @@ export type Book = {
   title: string;
   authors: Author[];
   description?: string;
-  cover_id?: number;
+  cover_id?: string;
+  cover_edition_key?: string;
 };
 
 export type BookQuery = {};

@@ -6,11 +6,14 @@ export const bookApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "https://openlibrary.org/" }),
   endpoints: (builder) => ({
     getAllBooks: builder.query<Book[], string>({
-      query: (page = "0") => `/subjects/fantasy.json?page=${page}`,
+      query: (page = "0") => `/subjects/fantasy.json?page=${page}?details=true`,
       transformResponse: (response: { works: Book[] }) => response.works,
     }),
     getBookInfo: builder.query<Book, string>({
       query: (id) => `/works/${id}.json`,
+    }),
+    getBookEdition: builder.query<Book, string>({
+      query: (id) => `/books/${id}.json`,
     }),
     getBookRaiting: builder.query<BookRating, string>({
       query: (id) => `/works/${id}/ratings.json`,
@@ -23,4 +26,5 @@ export const {
   useGetAllBooksQuery,
   useGetBookInfoQuery,
   useGetBookRaitingQuery,
+  useGetBookEditionQuery,
 } = bookApi;
